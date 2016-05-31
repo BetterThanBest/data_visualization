@@ -3,27 +3,24 @@ package controller;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.sql.Connection;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.crypto.Data;
-
-import util.DataBase;
 
 /**
- * Servlet implementation class FormServlet
+ * Servlet implementation class TestServlet
  */
-public class FormServlet extends HttpServlet {
+@WebServlet(name="TestServlet",urlPatterns={"controller/TestServlet"})
+public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FormServlet() {
+    public TestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,38 +32,19 @@ public class FormServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		String[] parameterName = request.getParameterValues("parameterName");
-		String[] type = request.getParameterValues("type");
-		String[] length = request.getParameterValues("length");
-		String[] primaryKey = request.getParameterValues("pk");
-		if(parameterName != null)
-		{
-			for(String pname : parameterName)
-			{
-				System.out.println(pname);
-			}
-		}
-		if(type != null)
-		{
-			for(String t : type)
-			{
-				System.out.println(t);
-			}
-		}
-		if(length != null)
-		{
-			for(String len:length)
-			{
-				System.out.println(len);
-			}
-		}
-		if(primaryKey != null)
-		{
-			for(String pk :primaryKey)
-			{
-				System.out.println(pk);
-			}
-		}
+		String name = request.getParameter("parameterName");
+		String gender = request.getParameter("gender");
+		String[] color = request.getParameterValues("color");
+		String national = request.getParameter("country");
+		PrintStream out = new PrintStream(response.getOutputStream());
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>servlet测试</title>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("your name: " + name +"<hr/>");
+		out.println("your sex: " + gender +"<hr/>" );
+		
 	}
 
 	/**

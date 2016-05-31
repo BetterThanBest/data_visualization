@@ -3,11 +3,25 @@
 <head>
 <meta charset="utf-8">
 <title>step1</title>
+<script type="text/javascript">
+var i = 0;
+	function add() 
+	{
+		
+		var inputText = document.createElement('input');
+		inputText.setAttribute('type', 'text');
+		inputText.setAttribute('name', ++i);
+		inputText.setAttribute('class', 'inputText');
+		var btn = document.getElementById("org");
+		btn.insertBefore(inputText, null);
+	}
+</script>
 </head>
 <body>
+	<div id = "org">
 	<form action="controller/FormServlet" method="post">
 		
-		<table borborder="0" align ="center">
+		<table border="0" align ="center" id = table>
 			<tr>
 				<td>num of columns:</td>
 				<td>
@@ -30,9 +44,11 @@
 				<td>
 					<input type="submit" name="submit" value ="submit">
 					<input type="reset" name = "reset" value ="reset">
+					<input type="button" onclick ="add()" value="addParameter"/>
 				</td>
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>
